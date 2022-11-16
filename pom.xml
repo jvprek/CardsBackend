@@ -9,7 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <name>CardsBackendServices</name>
 
-    <modules></modules>
+    <modules>
+        <module>eureka-service</module>
+        <module>payment-processor-simulator</module>
+    </modules>
 
 
 
