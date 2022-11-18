@@ -4,10 +4,15 @@ server:
 spring:
   application:
     name: config-service
+  profiles:
+    active: native
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
+#  config:
+#    import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+#  instance:
+#    preferIpAddress: true
