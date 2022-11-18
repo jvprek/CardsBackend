@@ -1,14 +1,4 @@
-server:
-    port: 10000
-    error:
-        include-message: always
-        include-binding-errors: always
-        include-stacktrace: on_param
-        include-exception: false
-
 spring:
-    application:
-      name: cards-info
     datasource:
         url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/cards_domain
         username: cards_domain
@@ -25,7 +15,6 @@ eureka:
 logging:
     pattern:
         console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-
 
 springdoc:
     version: '@springdoc.version@'

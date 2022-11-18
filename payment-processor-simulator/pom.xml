@@ -110,7 +110,7 @@
                 </executions>
                 <configuration>
                     <sources>
-                        <source>${project.basedir}/src/main/resources/countries.xsd</source>
+                        <source>${project.basedir}/src/main/resources/payment_processor.xsd</source>
                     </sources>
                 </configuration>
             </plugin>

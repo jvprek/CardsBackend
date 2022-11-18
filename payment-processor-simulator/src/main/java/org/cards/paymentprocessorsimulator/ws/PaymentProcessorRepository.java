@@ -1,4 +1,4 @@
-package org.cards.paymentprocessorsimulator;
+package org.cards.paymentprocessorsimulator.ws;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 @Component
-public class CountryRepository {
+public class PaymentProcessorRepository {
 	private static final Map<String, Country> countries = new HashMap<>();
 
 	@PostConstruct

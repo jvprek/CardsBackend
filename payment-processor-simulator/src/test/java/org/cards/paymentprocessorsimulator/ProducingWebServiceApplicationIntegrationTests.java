@@ -23,14 +23,14 @@ public class ProducingWebServiceApplicationIntegrationTests {
 
 	@BeforeEach
 	public void init() throws Exception {
-		marshaller.setPackagesToScan(ClassUtils.getPackageName(GetCountryRequest.class));
+		marshaller.setPackagesToScan(ClassUtils.getPackageName(GetPendingTransactionsRequest.class));
 		marshaller.afterPropertiesSet();
 	}
 
 	@Test
 	public void testSendAndReceive() {
 		WebServiceTemplate ws = new WebServiceTemplate(marshaller);
-		GetCountryRequest request = new GetCountryRequest();
+		GetPendingTransactionsRequest request = new GetPendingTransactionsRequest();
 		request.setName("Spain");
 
 		assertThat(ws.marshalSendAndReceive("http://localhost:"

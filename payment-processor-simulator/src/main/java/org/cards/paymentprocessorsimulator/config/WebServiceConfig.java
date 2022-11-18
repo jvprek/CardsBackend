@@ -1,4 +1,4 @@
-package org.cards.paymentprocessorsimulator;
+package org.cards.paymentprocessorsimulator.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +35,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
 	@Bean
 	public XsdSchema countriesSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("payment_processor.xsd"));
 	}
 }
