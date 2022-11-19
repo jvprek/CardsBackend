@@ -4,6 +4,12 @@ spring:
         username: cards_domain
         password: changeme
         driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+        maximum-pool-size: 5
+        auto-commit: false
+        connection-timeout: 1000
+        idle-timeout: 60000
+        max-lifetime: 180000
 
 eureka:
     client:

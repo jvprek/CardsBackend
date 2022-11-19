@@ -1,0 +1,9 @@
+-- PAYMENT PROCESSOR
+
+
+-- INSERT INTO payproc.cards(pan, cust_name, expires, balance, pin, sts)
+-- VALUES ('5555555555554444', 'JOHN DOE', '2026-11-18', 2000.00,'1111' 0),
+--        ('5454545454545454', 'GEORGE FORD', '2026-11-19', 2000.00, '2222', 1),
+--        ('5454545454545455', 'ANITA ECKBERG', '2026-11-20', 2000.00, '3333', 2),
+--        ('5454545454545456', 'DORA LEMOS', '2026-11-21', 2000.00, '4444', 1);
+-- CORE DOMAIN
