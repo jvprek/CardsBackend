@@ -1,0 +1,32 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://cards.org/services/payproc"
+           targetNamespace="http://cards.org/services/payproc"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="userRequestType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOST_OR_STOLEN"/>
+            <xs:enumeration value="REPLACE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="userRequest">
+        <xs:sequence>
+            <xs:element name="pan" type="xs:string"/>
+            <xs:element name="requestId" type="xs:long"/>
+            <xs:element name="requestTime" type="xs:long"/>
+            <xs:element name="userRequestType" type="tns:userRequestType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- User Request JMS incoming message-->
+    <xs:element name="userRequestMessage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userRequest" type="tns:userRequest"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
