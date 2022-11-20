@@ -30,7 +30,7 @@ public class Account {
     @Column(name = "balance", nullable = false, precision = 8, scale = 2)
     private BigDecimal balance;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "sts", nullable = false)
     private AccountStatus status;
 }
