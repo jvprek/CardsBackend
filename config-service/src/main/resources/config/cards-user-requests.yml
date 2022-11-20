@@ -24,3 +24,12 @@ logging:
 
 springdoc:
     version: '@springdoc.version@'
+
+app:
+    params:
+        mq:
+            brokerUrl: tcp://localhost:61616
+            brokerUser: admin
+            brokerPassword: admin
+            inQueue: fromPayProc
+            outQueue: toPayProc
