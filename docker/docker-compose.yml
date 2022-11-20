@@ -1,6 +1,6 @@
 version: '3'
 services:
-
+# RDBMS
   mysql-db:
     image: mysql:latest
     ports:
@@ -9,7 +9,12 @@ services:
       - "MYSQL_ROOT_PASSWORD=changeme"
     volumes:
       - $PWD/volumes/mysql-init:/docker-entrypoint-initdb.d
-
+# ActiveMQ
+  mq-broker:
+    image:  rmohr/activemq
+    ports:
+      - 61616:61616
+      - 8161:8161
 #  zookeeper:
 #    image: confluentinc/cp-zookeeper:7.0.1
 #    container_name: zookeeper

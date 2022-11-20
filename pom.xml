@@ -10,9 +10,11 @@
     <name>cards-backend-microservices</name>
 
     <modules>
+        <module>config-service</module>
         <module>eureka-service</module>
-        <module>payment-processor-simulator</module>
+        <module>payproc-simulator</module>
         <module>cards-info</module>
+        <module>cards-user-requests</module>
     </modules>
 
     <properties>

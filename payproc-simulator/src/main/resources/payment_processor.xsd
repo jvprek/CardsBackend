@@ -1,0 +1,86 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://cards.org/services/payproc"
+           targetNamespace="http://cards.org/services/payproc"
+           elementFormDefault="qualified">
+
+    <!-- Notifications Type Enum -->
+    <xs:simpleType name="notification">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LS"/>
+            <xs:enumeration value="REPLACE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Notifications Request -->
+    <xs:complexType name="notificationRequest">
+        <xs:sequence>
+            <xs:element name="traceId" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="pan" type="xs:string"/>
+            <xs:element name="notification" type="tns:notification"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- Notifications Error & Ack response -->
+    <xs:complexType name="ackResponse">
+        <xs:sequence>
+            <xs:element name="traceId" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="message" type="xs:string" nillable="true" />
+            <xs:element name="success" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="sendNotificationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="body" type="tns:notificationRequest"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getNotificationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="body" type="tns:ackResponse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getPendingTransactionsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPendingTransactionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="tns:country"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:complexType name="country">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="capital" type="xs:string"/>
+            <xs:element name="currency" type="tns:currency"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="PLN"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
