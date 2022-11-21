@@ -3,7 +3,8 @@
 In a fictional Bank, the Cards Domain division, designs, implements and supports software, that provides to the customers of the Bank credit card related services.
 There are two categories of services.
 
-1. Information-related requests from a client, such as an Account Information, Transaction History, etc2. User requests such as reporting a card as 'Lost or Stollen', requesting a replacement for a damaged Card, etc.
+1. Information-related requests from a client, such as an Account Information, Transaction History, etc.
+2. User requests such as reporting a card as 'Lost or Stollen', requesting a replacement for a damaged Card, etc.
 
 The above services are consumed from various channels of the Bank such as 'Web Banking', 'Mobile Phone Banking', and 'Retail Banking'.
 The Cards Domain does not 'own' most of these data, and the required data are extracted and consumed from services of other domains.
