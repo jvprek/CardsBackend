@@ -20,11 +20,78 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Slf4j
-//@RestControllerAdvice
+@RestControllerAdvice
 //@Order(Ordered.HIGHEST_PRECEDENCE)
-public class ApiControllerExceptionHandler/* extends ResponseEntityExceptionHandler */{
+public class ApiControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * Default fall back
+     */
+    @ExceptionHandler(value = {Exception.class})
+    protected ResponseEntity fallBackHandleException(
+            Exception ex, WebRequest request) {
 
+        log.warn(request.toString());
+        var errDto = buildError(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", request);
+        return handleExceptionInternal(ex, errDto,
+                new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    protected ResponseEntity handleAppNotFoundException(
+            NotFoundException ex,
+            WebRequest request) {
+
+        log.warn("NotFoundException Exception {}", ex.getMessage());
+
+        var errDto =  buildError(HttpStatus.NOT_FOUND, ex.getMessage(), request);
+        return handleExceptionInternal(ex, errDto,
+                new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @Override
+    protected ResponseEntity handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+        log.warn(request.toString());
+        var errDto = buildError(HttpStatus.BAD_REQUEST, ex, request);
+        return handleExceptionInternal(ex, errDto,
+                new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    private ApiErrorDto buildError(HttpStatus status, String message, WebRequest request) {
+        return new ApiErrorDto(
+                status.value(),
+                message,
+                LocalDateTime.now(),
+                getMethod(request),
+                getPath(request)
+        );
+    }
+
+    private ApiErrorDto buildError(HttpStatus status, MethodArgumentNotValidException ex, WebRequest request) {
+        var errorResponse = new ApiErrorDto(
+                status.value(),
+                "Validation Error",
+                LocalDateTime.now(),
+                getMethod(request),
+                getPath(request)
+        );
+        for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
+            errorResponse.addValidationError(fieldError.getField(),
+                    fieldError.getDefaultMessage(),
+                    fieldError.getRejectedValue());
+        }
+        return errorResponse;
+    }
+
+    private String getPath(WebRequest request) {
+        var url = ((ServletWebRequest) request).getRequest().getRequestURI();
+        return url.substring(url.indexOf('/'));
+    }
+
+    private String getMethod(WebRequest request) {
+        return ((ServletWebRequest) request).getHttpMethod().name();
+    }
 
 
 }

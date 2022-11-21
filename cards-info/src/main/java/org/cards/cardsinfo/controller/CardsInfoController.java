@@ -24,10 +24,7 @@ import javax.validation.constraints.Min;
 @RestController
 @RequestMapping("/")
 @Validated
-@Tag(name = "CARDS-INFO", description = """
-        Cards Information API
-        Basic Info for a card's account
-        """)
+@Tag(name = "CARDS-INFO", description = "Cards Information API - Basic Info for a card's account")
 public class CardsInfoController {
 
     private final AccountRepository repository;
