@@ -70,7 +70,7 @@ Completed transactions for a credit card
 # Core Banking Endpoints
 
 ## POST /core-banking/accounts/cards
-Account creation for a new credit cards
+Account creation request, for a new credit card.
 ### INPUT
 - pan
 - name
