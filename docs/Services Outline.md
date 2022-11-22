@@ -7,7 +7,7 @@ Person requests issue of a new card, through the bank
 - limit
 - income
 ### Output 
-- status ``SUCCESS | REJECTED``
+- status `SUCCESS | REJECTED`
 
 ## POST /payproc/banking/activate
 Card Owner activates new or replaced card,, through the bank (ATM, helpdesk etc)
