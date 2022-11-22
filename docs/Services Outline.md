@@ -72,15 +72,17 @@ Completed transactions for a credit card
 ## POST /core-banking/accounts/cards
 Account creation for a new credit cards
 ### INPUT
-- PAN
-- Name
-- Limit
+- pan
+- name
+- limit
+- income
+
 ### Output
 - status `SUCCESS | REJECTED`
 - accountId (if status == SUCCESS)
 
-## POST /core-banking/accounts/{accountId}
-Tx Authorization
+## GET /core-banking/accounts/{accountId}
+Information about a Credit Card Account
 ### Output
 - accountId
 - pan
@@ -114,7 +116,9 @@ HTTP status
 Credit Card Payment History
 ### Input 
 - accountId
+
 ### Output
+
  Array of :
  - dateTime 
  - amount
