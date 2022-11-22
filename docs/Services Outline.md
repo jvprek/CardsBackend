@@ -7,7 +7,7 @@ Person requests issue of a new card, through the bank
 - limit
 - income
 ### Output 
-- status [SUCCESS | REJECTED]
+- status SUCCESS | REJECTED
 
 ## POST /payproc/banking/activate
 Card Owner activates new or replaced card,, through the bank (ATM, helpdesk etc)
@@ -37,7 +37,7 @@ Card Owner Initiates Transaction with a merchant
 - Amount
 - Merchant
 - time
-- status [SUCCESS | REJECTED]
+- status SUCCESS | REJECTED
 
 ## PUT /payproc/merchant/transactions/{tx-id}/completion
 Merchant completes  a transaction 
@@ -75,7 +75,7 @@ Account creation for a new credit cards
 - Name
 - Limit
 ### Output
-- status [SUCCESS | REJECTED]
+- status SUCCESS | REJECTED
 - accountId (if status == SUCCESS)
 
 
@@ -87,7 +87,7 @@ Tx Authorization
 - name
 - balance
 - limit
-- status  [IN_PROGRESS | ACTIVE | SUSPENDED]
+- status  IN_PROGRESS | ACTIVE | SUSPENDED
 
 ## POST /core-banking/payments/authorizations
 Tx Authorization
@@ -97,7 +97,7 @@ Tx Authorization
 - time
 ### Output
 - tx-id
-- status [SUCCESS | REJECTED]
+- status SUCCESS | REJECTED
 - time
 
 ## POST /core-banking/payments/credits
@@ -106,7 +106,7 @@ Card account is credited either from a cards owner payment, transaction refund, 
 - AccountId
 - Amount
 - time
-- type [PAYMENT | TX_CANCELLATION | REFUND]
+- type PAYMENT | TX_CANCELLATION | REFUND
 ### Output
 HTTP status
 
@@ -124,7 +124,7 @@ Core Domain has received a user request
 ### Input 
 - AccountId
 - time
-- type [LOST_OR_STOLLEN | REPLACE]
+- type LOST_OR_STOLLEN | REPLACE
 ### Output
 HTTP status
 
@@ -136,8 +136,8 @@ Credit Card Payment History
  Array of :
     - AccountId
     - timeCreated:
-    - type [LOST_OR_STOLLEN | REPLACE]
-    - status [PENDING | COMPLETED]
+    - type LOST_OR_STOLLEN | REPLACE
+    - status PENDING | COMPLETED
     - timeCompleted: (null if status == PENDING)
 
 
