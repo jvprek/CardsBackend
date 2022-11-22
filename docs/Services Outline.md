@@ -1,4 +1,4 @@
-# Payment Processor
+# Payment Processor Endpoints
 
 ## POST /payproc/banking/cards/create
 Person requests issue of a new card, through the bank
@@ -66,7 +66,7 @@ Completed transactions for a credit card
 - Amount
 - Merchant
 
-# Core Banking
+# Core Banking Endpoints
 
 ## POST /core-banking/accounts/cards
 Account creation for a new credit cards
@@ -127,7 +127,7 @@ Core Domain has received a user request
 ### Output
 HTTP status
 
-## GET /core-banking/payments/user-requests/cards
+## GET /core-banking/payments/user-requests/cards/{accountId}/?
 Credit Card Payment History
 ### Input 
 - accountId
@@ -140,3 +140,12 @@ Credit Card Payment History
     - timeCompleted: (null if status == PENDING)
 
 
+# Cards Domain  Endpoints
+
+## GET /cards/{accountId}/info
+
+## GET /cards/{accountId}/pending-transactions
+
+## GET /cards/{accountId}/completed-transactions
+
+## GET /cards/{accountId}/user-requests
