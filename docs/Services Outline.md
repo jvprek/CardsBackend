@@ -6,6 +6,7 @@ Person requests issue of a new card, through the bank
 - name
 - limit
 - income
+
 ### Output 
 - status `SUCCESS | REJECTED`
 
