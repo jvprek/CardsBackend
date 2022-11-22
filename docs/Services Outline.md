@@ -37,7 +37,7 @@ Card Owner Initiates Transaction with a merchant
 - Amount
 - Merchant
 - time
-- status SUCCESS | REJECTED
+- status `SUCCESS | REJECTED`
 
 ## PUT /payproc/merchant/transactions/{tx-id}/completion
 Merchant completes  a transaction 
