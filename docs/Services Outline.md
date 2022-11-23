@@ -10,21 +10,6 @@ Person requests issue of a new card, through the bank
 ### Output 
 - status `SUCCESS | REJECTED`
 
-## POST /payproc/banking/activate TODO
-Card Owner activates new or replaced card, through the bank (ATM, helpdesk etc)
-### Input 
-- PAN
-- time
-### Output 
-HTTP status
-
-## POST /payproc/banking/payments TODO
-Core banking notifies Payment processor for a new Customer Payment
-### Input 
-- accountId
-- time
-### Output 
-HTTP status
 
 ## POST /payproc/merchant/transactions 
 Card Owner Initiates Transaction with a merchant
@@ -44,10 +29,11 @@ Card Owner Initiates Transaction with a merchant
 Merchant completes  a transaction 
 ### Input
 - tx-id
+- status `COMPLETE | CANCELLED`
 ### Output
 HTTP status
 
-## GET /payproc/customer/transactions/{accountId}/pending
+## SOAP getPendingTransactions/{accountId}
 Pending transactions for a credit card
 ### Input 
 - accountId
@@ -57,25 +43,7 @@ Pending transactions for a credit card
 - Amount
 - Merchant
 
-## GET /payproc/customer/transactions/{accountId}/complete
-Completed transactions for a credit card
-### Input 
-- accountId
-### Output
-- tx-id
-- time
-- Amount
-- Merchant
-
 # Core Banking Endpoints
-
-## POST /core-banking/accounts/cards
-Account creation request, for a new credit card.
-### INPUT
-- pan
-- name
-- limit
-- income
 
 ### Output
 - status `SUCCESS | REJECTED`
@@ -91,8 +59,8 @@ Information about a Credit Card Account
 - limit
 - status  `IN_PROGRESS | ACTIVE | SUSPENDED`
 
-## POST /core-banking/payments/authorizations
-Tx Authorization
+## POST /core-banking/payments/debit
+Tx Authorization, account is debited
 ### Input 
 - AccountId
 - Amount
@@ -102,7 +70,7 @@ Tx Authorization
 - status `SUCCESS | REJECTED`
 - time
 
-## POST /core-banking/payments/credits
+## POST /core-banking/payments/credit
 Card account is credited either from a cards owner payment, transaction refund, or cancelation
 ### Input 
 - AccountId
@@ -118,7 +86,6 @@ Credit Card Payment History
 - accountId
 
 ### Output
-
  Array of :
  - dateTime 
  - amount
@@ -145,12 +112,22 @@ Credit Card Payment History
     - timeCompleted: (null if status == PENDING)
 
 
-# Cards Domain  Endpoints
+# Cards Domain Endpoints
 
 ## GET /cards/{accountId}/info
 
-## GET /cards/{accountId}/pending-transactions
+## GET /cards/{accountId}/transactions
 
-## GET /cards/{accountId}/completed-transactions
+# POST /cards/user-requests
+User Request 
+### Input 
+- AccountId
+- time
+- type `LOST_OR_STOLLEN | REPLACE`
+### Output
+HTTP status
 
-## GET /cards/{accountId}/user-requests
+## GET /cards/{accountId}/pending-user-requests
+
+
+
