@@ -4,11 +4,11 @@
 
 ### POST /payproc/merchant/transactions
 Card Owner real time  Transaction with a merchant
-##### Input 
+#### Input 
 - PAN
 - Amount
 - Merchant
-##### Output
+#### Output
 - tx-id
 - Amount
 - Merchant
@@ -17,100 +17,91 @@ Card Owner real time  Transaction with a merchant
 
 ### PUT /payproc/merchant/transactions/{tx-id}/completion
 Merchant completes  a transaction 
-##### Input
+#### Input
 - tx-id
 - status `COMPLETE | CANCELLED`
-##### Output
+#### Output
 HTTP status
 
 ## Online Interface
 
 ### POST /payproc/online/transactions
 Card Owner Online Transaction, needing owner's approval
-##### Input 
+#### Input 
 - PAN
 - Amount
 - Merchant
-##### Output
+#### Output
 - tx-id
 
 ###  KAFKA PUT /payproc/online/transactions/
 Card Owner confirms or rejects an Online Transaction 
-##### Input 
+#### Input 
 - tx-id
 - status `SUCCESS | REJECTED`- Amount
 - time
-##### Output
+#### Output
 HTTP Status
 
 ## Banking Interface
 
 ### SOAP getPendingTransactions/{accountId}
 Pending transactions for a credit card
-##### Input 
+#### Input 
 - accountId
-##### Output
+#### Output
 - tx-id
 - time
 - Amount
 - Merchant
 
-
-### GET /core-banking/accounts/{accountId}
-Information about a Credit Card Account
-##### Output
-- accountId
-- pan
-- name
-- balance
-- limit
-- status  `IN_PROGRESS | ACTIVE | SUSPENDED`
+# Core Domain Endpoints
 
 ### POST /core-banking/payments/debit
 Tx Authorization, account is debited
-##### Input 
+#### Input 
 - AccountId
 - Amount
 - time
-##### Output
+#### Output
 - tx-id
 - status `SUCCESS | REJECTED`
 - time
 
 ### POST /core-banking/payments/credit
 Card account is credited either from a cards owner payment, transaction refund, or cancelation
-##### Input 
+#### Input 
 - AccountId
 - Amount
 - time
 - type `PAYMENT | TX_CANCELLATION | REFUND`
-##### Output
+#### Output
 HTTP status
 
 ### GET /core-banking/payments/cards/{accountId}
 Credit Card Payment History
-##### Input 
+#### Input 
 - accountId
 
-##### Output
+#### Output
  Array of :
  - dateTime 
  - amount
 
 # POST /core-banking/user-requests/cards
 Core Domain has received a user request
-##### Input 
+#### Input 
 - AccountId
 - time
 - type `LOST_OR_STOLLEN | REPLACE`
-##### Output
+#### Output
 HTTP status
 
-### GET /core-banking/payments/user-requests/cards/{accountId}/?
+### GET /core-banking/payments/user-requests/cards/{accountId}/account
 Credit Card Payment History
-##### Input 
+#### Input 
 - accountId
-##### Output
+#### Output
  Array of :
     - AccountId
     - timeCreated:
@@ -127,11 +118,11 @@ Credit Card Payment History
 
 ### POST /cards/user-requests
 User Request 
-##### Input 
+#### Input 
 - AccountId
 - time
 - type `LOST_OR_STOLLEN | REPLACE`
-##### Output
+#### Output
 HTTP status
 
 ### GET /cards/{accountId}/pending-user-requests
