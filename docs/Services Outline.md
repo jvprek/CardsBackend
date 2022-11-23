@@ -8,6 +8,7 @@ Card Owner real time  Transaction with a merchant
 - PAN
 - Amount
 - Merchant
+
 #### Output
 - tx-id
 - Amount
@@ -20,6 +21,7 @@ Merchant completes  a transaction
 #### Input
 - tx-id
 - status `COMPLETE | CANCELLED`
+
 #### Output
 HTTP status
 
@@ -31,6 +33,7 @@ Card Owner Online Transaction, needing owner's approval
 - PAN
 - Amount
 - Merchant
+
 #### Output
 - tx-id
 
@@ -40,6 +43,7 @@ Card Owner confirms or rejects an Online Transaction
 - tx-id
 - status `SUCCESS | REJECTED`- Amount
 - time
+
 #### Output
 HTTP Status
 
@@ -49,6 +53,7 @@ HTTP Status
 Pending transactions for a credit card
 #### Input 
 - accountId
+
 #### Output
 - tx-id
 - time
@@ -63,6 +68,7 @@ Tx Authorization, account is debited
 - AccountId
 - Amount
 - time
+
 #### Output
 - tx-id
 - status `SUCCESS | REJECTED`
@@ -75,6 +81,7 @@ Card account is credited either from a cards owner payment, transaction refund, 
 - Amount
 - time
 - type `PAYMENT | TX_CANCELLATION | REFUND`
+
 #### Output
 HTTP status
 
@@ -94,6 +101,7 @@ Core Domain has received a user request
 - AccountId
 - time
 - type `LOST_OR_STOLLEN | REPLACE`
+
 #### Output
 HTTP status
 
@@ -101,6 +109,7 @@ HTTP status
 Credit Card Payment History
 #### Input 
 - accountId
+
 #### Output
  Array of :
     - AccountId
@@ -122,6 +131,7 @@ User Request
 - AccountId
 - time
 - type `LOST_OR_STOLLEN | REPLACE`
+
 #### Output
 HTTP status
 
